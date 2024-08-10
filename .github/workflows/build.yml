@@ -21,6 +21,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
+    - name: Generate a token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          
     - name: Prepare varibles
       run: |      
         cd ${{ github.workspace }}
@@ -40,7 +47,7 @@ jobs:
         gh variable set BUILD_NUMBER --body 100
       env:
         BUILD_NUMBER_ENV: ${{ vars.BUILD_NUMBER }}
-        GH_TOKEN: ${{ github.token }}
+        GH_TOKEN: ${{ steps.generate_token.outputs.token }}
         
     - name: check varibles
       run: |      
