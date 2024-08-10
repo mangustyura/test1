@@ -29,6 +29,6 @@ jobs:
         
         echo "BUILD_NUMBER:${{ vars.BUILD_NUMBER }}"
         
-        vars.BUILD_NUMBER=100
-        
+        echo "vars.BUILD_NUMBER=100" >> $GITHUB_OUTPUT
+                
         echo "BUILD_NUMBER2:${{ vars.BUILD_NUMBER }}"
