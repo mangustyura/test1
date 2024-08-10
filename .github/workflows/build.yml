@@ -21,8 +21,8 @@ jobs:
       run: |      
         cd ${{ github.workspace }}
         echo "Hello"
-#        RESULT=$(grep "versionName ="${{ github.workspace }}/build.gradle.kts)
-#        RESULT=${RESULT:`expr index "$RESULT" \"`}
-#        RESULT=${RESULT::`expr index "$RESULT" \"`-1}
-#        echo "VERSION_CODE_BUILD_VARIABLE=$RESULT" >> $GITHUB_OUTPUT
-#        echo "versionCode:$RESULT"
+        RESULT=$(grep "versionName ="${{ github.workspace }}/build.gradle.kts)
+        RESULT=${RESULT:`expr index "$RESULT" \"`}
+        RESULT=${RESULT::`expr index "$RESULT" \"`-1}
+        echo "VERSION_CODE_BUILD_VARIABLE=$RESULT" >> $GITHUB_OUTPUT
+        echo "versionCode:$RESULT"
