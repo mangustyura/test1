@@ -33,7 +33,7 @@ jobs:
                            
         echo "BUILD_NUMBER_ENV:${{ env.BUILD_NUMBER_ENV }}"
         
-        gh variable set MYVARIABLE --body 100
+        gh variable set BUILD_NUMBER --body 100
       env:
         BUILD_NUMBER_ENV: ${{ vars.BUILD_NUMBER }}
         GH_TOKEN: ${{ github.token }}
