@@ -30,6 +30,10 @@ jobs:
         echo "BUILD_NUMBER:${{ vars.BUILD_NUMBER }}"
         
         echo "vars.BUILD_NUMBER=100" >> $GITHUB_OUTPUT
+                           
+        echo "BUILD_NUMBER_ENV:${{ env.BUILD_NUMBER_ENV }}"
+        
+        gh variable set MYVARIABLE --body 100
       env:
         BUILD_NUMBER_ENV: ${{ vars.BUILD_NUMBER }}
         
