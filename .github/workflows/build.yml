@@ -4,8 +4,8 @@ on:
   push:
   workflow_dispatch:
     inputs:
-      release_tag:
-        description: 'release_tag'
+      CORE_VERSION:
+        description: 'CORE_VERSION'
         required: false
         default: '0.0.1'
         
