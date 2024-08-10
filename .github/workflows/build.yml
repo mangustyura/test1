@@ -20,10 +20,11 @@ jobs:
     - name: Prepare varibles
       run: |      
         cd ${{ github.workspace }}
-        echo "Hello"
-        cat "${{ github.workspace }}/build.gradle.kts"
+        
         RESULT=$(grep "versionName =" ${{ github.workspace }}/build.gradle.kts)
         RESULT=${RESULT:`expr index "$RESULT" \"`}
         RESULT=${RESULT::`expr index "$RESULT" \"`-1}
         echo "VERSION_CODE_BUILD_VARIABLE=$RESULT" >> $GITHUB_OUTPUT
         echo "versionCode:$RESULT"
+        
+        echo "BUILD_NUMBER:${{ vars.BUILD_NUMBER }}"
