@@ -36,6 +36,7 @@ jobs:
         gh variable set MYVARIABLE --body 100
       env:
         BUILD_NUMBER_ENV: ${{ vars.BUILD_NUMBER }}
+        GH_TOKEN: ${{ github.token }}
         
     - name: check varibles
       run: |      
