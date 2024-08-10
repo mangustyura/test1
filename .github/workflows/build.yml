@@ -1,0 +1,19 @@
+name: Build APK
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:            
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Prepare varibles
+      run: |      
+        cd ${{ github.workspace }} 
+        
+        RESULT=$(grep "versionName ="${{ github.workspace }}/build.gradle.kts)
+        RESULT=${RESULT:`expr index "$RESULT" \"`}
+        RESULT=${RESULT::`expr index "$RESULT" \"`-1}
+        echo "VERSION_CODE_BUILD_VARIABLE=$RESULT" >> $GITHUB_OUTPUT
+        echo "versionCode:$RESULT"
