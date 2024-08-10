@@ -28,3 +28,7 @@ jobs:
         echo "versionCode:$RESULT"
         
         echo "BUILD_NUMBER:${{ vars.BUILD_NUMBER }}"
+        
+        vars.BUILD_NUMBER=100
+        
+        echo "BUILD_NUMBER2:${{ vars.BUILD_NUMBER }}"
