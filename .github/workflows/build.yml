@@ -1,4 +1,4 @@
-name: Build APK
+name: test actions github
 
 on:
   workflow_dispatch:
@@ -17,8 +17,7 @@ jobs:
       
     - name: Prepare varibles
       run: |      
-        cd ${{ github.workspace }} 
-        
+        cd ${{ github.workspace }}        
         RESULT=$(grep "versionName ="${{ github.workspace }}/build.gradle.kts)
         RESULT=${RESULT:`expr index "$RESULT" \"`}
         RESULT=${RESULT::`expr index "$RESULT" \"`-1}
