@@ -1,11 +1,13 @@
 name: test actions github
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       release_tag:
-        required: true
-        type: string
+        description: 'release_tag'
+        required: false
+        default: '0.0.1'
         
 jobs:
   build:
@@ -17,9 +19,10 @@ jobs:
       
     - name: Prepare varibles
       run: |      
-        cd ${{ github.workspace }}        
-        RESULT=$(grep "versionName ="${{ github.workspace }}/build.gradle.kts)
-        RESULT=${RESULT:`expr index "$RESULT" \"`}
-        RESULT=${RESULT::`expr index "$RESULT" \"`-1}
-        echo "VERSION_CODE_BUILD_VARIABLE=$RESULT" >> $GITHUB_OUTPUT
-        echo "versionCode:$RESULT"
+        cd ${{ github.workspace }}
+        echo "Hello"
+#        RESULT=$(grep "versionName ="${{ github.workspace }}/build.gradle.kts)
+#        RESULT=${RESULT:`expr index "$RESULT" \"`}
+#        RESULT=${RESULT::`expr index "$RESULT" \"`-1}
+#        echo "VERSION_CODE_BUILD_VARIABLE=$RESULT" >> $GITHUB_OUTPUT
+#        echo "versionCode:$RESULT"
