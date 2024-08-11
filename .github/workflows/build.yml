@@ -41,7 +41,7 @@ jobs:
         cd ${{ github.workspace }}
         echo "BUILD_NUMBER:${{ vars.BUILD_NUMBER }}"                   
         echo "BUILD_NUMBER_ENV:${{ env.BUILD_NUMBER_ENV }}"
-        echo "steps.BUILD_NUMBER:${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}
+        echo "steps.BUILD_NUMBER:${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}"
         gh variable set BUILD_NUMBER --body ${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}
       env:
         BUILD_NUMBER_ENV: ${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}
