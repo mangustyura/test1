@@ -35,7 +35,6 @@ jobs:
         echo "BUILD_NUMBER:${{ vars.BUILD_NUMBER }}"
       env:
         BUILD_NUMBER_ENV: ${{ vars.BUILD_NUMBER }}
-        GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         
     - name: check varibles
       run: |      
@@ -47,3 +46,4 @@ jobs:
         gh variable set BUILD_NUMBER --body ${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}
       env:
         BUILD_NUMBER_ENV: ${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}
+        GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
