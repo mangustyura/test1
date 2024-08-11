@@ -39,7 +39,6 @@ jobs:
     - name: check varibles
       run: |      
         cd ${{ github.workspace }}
-        
         echo "BUILD_NUMBER:${{ vars.BUILD_NUMBER }}"                   
         echo "BUILD_NUMBER_ENV:${{ env.BUILD_NUMBER_ENV }}"
         echo "steps.BUILD_NUMBER:${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}
