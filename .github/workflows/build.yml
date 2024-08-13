@@ -49,4 +49,4 @@ jobs:
       env:
         BUILD_NUMBER_ENV: ${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}
         GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-        RUN_NUMBER_ENV: ${{ steps.varibles_prepare.outputs.run_number }}
+        RUN_NUMBER_ENV: ${{ steps.varibles_prepare.outputs.run_number }}_(123)
