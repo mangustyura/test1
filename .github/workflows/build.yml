@@ -29,6 +29,7 @@ jobs:
         echo "versionCode:$RESULT"
         
         echo "run_number:${{ github.run_number }}"   
+        echo "run_number=${{ github.run_number }}" >> $GITHUB_OUTPUT
         
         echo "BUILD_NUMBER:${{ vars.BUILD_NUMBER }}"                          
         echo "BUILD_NUMBER_ENV:${{ env.BUILD_NUMBER_ENV }}"        
@@ -48,3 +49,4 @@ jobs:
       env:
         BUILD_NUMBER_ENV: ${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}
         GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        RUN_NUMBER_ENV: ${{ steps.varibles_prepare.outputs.run_number }}
