@@ -46,6 +46,8 @@ jobs:
         echo "BUILD_NUMBER_ENV:${{ env.BUILD_NUMBER_ENV }}"
         echo "steps.BUILD_NUMBER:${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}"
         gh variable set BUILD_NUMBER --body "${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}"
+        
+        echo "env.RUN_NUMBER_ENV:${{ env.RUN_NUMBER_ENV }}"
       env:
         BUILD_NUMBER_ENV: ${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}
         GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
