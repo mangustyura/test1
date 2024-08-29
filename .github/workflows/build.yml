@@ -43,7 +43,9 @@ jobs:
         curl -X POST \
             -H "Content-Type: application/json" \
             -d "{\"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\", \"text\": \"$MESSAGE\", \"parse_mode\": \"Markdown\"}" \
-            https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage
+            https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage > ${{ github.workspace }}/telegram_send_output.txt
+            
+        ls ${{ github.workspace }}    
         
       env:
         BUILD_NUMBER_ENV: ${{ vars.BUILD_NUMBER }}
