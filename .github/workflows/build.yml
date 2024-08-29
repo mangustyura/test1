@@ -44,6 +44,8 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\", \"text\": \"$MESSAGE\", \"parse_mode\": \"Markdown\"}" \
             https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage > ${{ github.workspace }}/telegram_send_output.txt
+            
+        cat ${{ github.workspace }}/telegram_send_output.txt
         
         MESSAGE_ID=$(grep -oP 'message_id\":\d+' telegram_send_output.txt)
         MESSAGE_ID=${MESSAGE_ID:`expr index "$MESSAGE_ID" \:`}    
@@ -67,6 +69,7 @@ jobs:
         
         MESSAGE="🚀 У нас новый commit для *Android*\nАвтор:\nСборка завершена"
         echo $MESSAGE
+        echo "MESSAGE_ID=${{steps.varibles_prepare.outputs.MESSAGE_ID}}"
         
         curl -X POST \
             -H "Content-Type: application/json" \
