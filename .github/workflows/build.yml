@@ -73,7 +73,7 @@ jobs:
         
         curl -X POST \
             -H "Content-Type: application/json" \
-            -d "{\"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\", \"text\": \"$MESSAGE\", \"parse_mode\": \"Markdown\"}", \"message_id\": \"${{steps.varibles_prepare.outputs.MESSAGE_ID}}\" \
+            -d "{\"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\", \"text\": \"$MESSAGE\", \"message_id\": \"${{steps.varibles_prepare.outputs.MESSAGE_ID}}\", \"parse_mode\": \"Markdown\"}" \
             https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/editMessageText
         
       env:
