@@ -45,8 +45,9 @@ jobs:
             -d "{\"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\", \"text\": \"$MESSAGE\", \"parse_mode\": \"Markdown\"}" \
             https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage > ${{ github.workspace }}/telegram_send_output.txt
         
-        MESSAGE_ID=$(grep -oP 'message_id\":\d+' telegram_bot_send_message_output.txt)
-        MESSAGE_ID=${MESSAGE_ID:`expr index "$MESSAGE_ID" \:`}       
+        MESSAGE_ID=$(grep -oP 'message_id\":\d+' telegram_send_output.txt)
+        MESSAGE_ID=${MESSAGE_ID:`expr index "$MESSAGE_ID" \:`}    
+        echo "MESSAGE_ID=$MESSAGE_ID"
         echo "MESSAGE_ID=$MESSAGE_ID" >> $GITHUB_OUTPUT 
         
         ls ${{ github.workspace }}    
