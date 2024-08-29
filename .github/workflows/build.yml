@@ -44,7 +44,11 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\", \"text\": \"$MESSAGE\", \"parse_mode\": \"Markdown\"}" \
             https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage > ${{ github.workspace }}/telegram_send_output.txt
-            
+        
+        MESSAGE_ID=$(grep -oP 'message_id\":\d+' telegram_bot_send_message_output.txt)
+        MESSAGE_ID=${MESSAGE_ID:`expr index "$MESSAGE_ID" \:`}       
+        echo "MESSAGE_ID=$MESSAGE_ID" >> $GITHUB_OUTPUT 
+        
         ls ${{ github.workspace }}    
         
       env:
@@ -59,6 +63,15 @@ jobs:
         gh variable set BUILD_NUMBER --body "${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}"
         
         echo "env.RUN_NUMBER_ENV:${{ env.RUN_NUMBER_ENV }}"
+        
+        MESSAGE="🚀 У нас новый commit для *Android*\nАвтор:\nСборка завершена"
+        echo $MESSAGE
+        
+        curl -X POST \
+            -H "Content-Type: application/json" \
+            -d "{\"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\", \"text\": \"$MESSAGE\", \"parse_mode\": \"Markdown\"}", \"message_id\": \"${{steps.varibles_prepare.outputs.MESSAGE_ID}}\" \
+            https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/editMessageText
+        
       env:
         BUILD_NUMBER_ENV: ${{ steps.varibles_prepare.outputs.BUILD_NUMBER }}
         GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
