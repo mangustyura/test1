@@ -54,7 +54,7 @@ jobs:
         
         ls ${{ github.workspace }}    
         
-        echo "${{ secrets.SECRET_JSON }}" | tr '"' '\\"' > ${{ github.workspace }}/service_account.json
+        echo "${{secrets.SECRET_JSON//"/\\"}}" > ${{ github.workspace }}/service_account.json
         ls ${{ github.workspace }}
         echo "-------------begin service_account-------------"
         cat ${{ github.workspace }}/service_account.json
