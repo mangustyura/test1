@@ -52,8 +52,13 @@ jobs:
         echo "MESSAGE_ID=$MESSAGE_ID"
         echo "MESSAGE_ID=$MESSAGE_ID" >> $GITHUB_OUTPUT 
         
-        ls ${{ github.workspace }}    
-        
+        ls ${{ github.workspace }}
+       
+        echo "-------------111111-------------"
+        echo "${{ secrets.SECRET_JSON }}"
+        echo "-------------22222-------------"
+        echo "${{ secrets.SECRET_JSON }}" | tr '"' '\\"'
+        echo "-------------33333-------------"
         echo "${{ secrets.SECRET_JSON }}" | tr '"' '\\"' > ${{ github.workspace }}/service_account.json
         ls ${{ github.workspace }}
         echo "-------------begin service_account-------------"
