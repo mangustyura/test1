@@ -57,7 +57,7 @@ jobs:
         echo "${{ secrets.SECRET_JSON }}" > ${{ github.workspace }}/service_account.json
         ls ${{ github.workspace }}
         echo "-------------begin service_account-------------"
-        cat ${{ github.workspace }}/service_account.txt
+        cat ${{ github.workspace }}/service_account.json
         echo "-------------end service_account---------------"
         
       env:
