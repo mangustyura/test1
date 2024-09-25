@@ -2,12 +2,6 @@ name: test actions github
 
 on:
   push:
-  workflow_dispatch:
-    inputs:
-      CORE_VERSION:
-        description: 'CORE_VERSION'
-        required: false
-        default: '0.0.1'
         
 jobs:
   build:
